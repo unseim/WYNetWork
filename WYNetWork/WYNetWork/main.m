@@ -1,9 +1,9 @@
 //
-//  main.m
+//  WYNetwork.h
 //  WYNetWork
-//
-//  Created by Developer_wnc on 2018/7/14.
-//  Copyright © 2018年 JuYingDengLing. All rights reserved.
+//  简书地址：http://www.jianshu.com/u/8f8143fbe7e4
+//  GitHub地址：https://github.com/unseim
+//  QQ：9137279
 //
 
 #import <UIKit/UIKit.h>

@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9D5E525120FB167D001223EB /* WYNetworkRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523420FB167D001223EB /* WYNetworkRequestModel.m */; };
+		9D5E525220FB167D001223EB /* WYNetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523520FB167D001223EB /* WYNetworkConfig.m */; };
+		9D5E525320FB167D001223EB /* WYNetworkRequestPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523620FB167D001223EB /* WYNetworkRequestPool.m */; };
+		9D5E525420FB167D001223EB /* WYNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523920FB167D001223EB /* WYNetworkManager.m */; };
+		9D5E525520FB167D001223EB /* WYNetworkCacheInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523A20FB167D001223EB /* WYNetworkCacheInfo.m */; };
+		9D5E525620FB167D001223EB /* WYNetworkUploadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523C20FB167D001223EB /* WYNetworkUploadEngine.m */; };
+		9D5E525720FB167D001223EB /* WYNetworkDownloadResumeDataInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E523E20FB167D001223EB /* WYNetworkDownloadResumeDataInfo.m */; };
+		9D5E525820FB167D001223EB /* WYNetworkCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E524620FB167D001223EB /* WYNetworkCacheManager.m */; };
+		9D5E525920FB167D001223EB /* WYNetworkRequestEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E524A20FB167D001223EB /* WYNetworkRequestEngine.m */; };
+		9D5E525A20FB167D001223EB /* WYNetworkDownloadEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E524C20FB167D001223EB /* WYNetworkDownloadEngine.m */; };
+		9D5E525B20FB167D001223EB /* WYNetworkUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E524D20FB167D001223EB /* WYNetworkUtils.m */; };
+		9D5E525C20FB167D001223EB /* WYNetworkBaseEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E524E20FB167D001223EB /* WYNetworkBaseEngine.m */; };
+		9D5E525D20FB167D001223EB /* WYImageScaleTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E525020FB167D001223EB /* WYImageScaleTool.m */; };
+		9DA9403720F9FD41007241D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA9403620F9FD41007241D7 /* AppDelegate.m */; };
+		9DA9403A20F9FD41007241D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA9403920F9FD41007241D7 /* ViewController.m */; };
+		9DA9403D20F9FD41007241D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA9403B20F9FD41007241D7 /* Main.storyboard */; };
+		9DA9403F20F9FD41007241D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DA9403E20F9FD41007241D7 /* Assets.xcassets */; };
+		9DA9404220F9FD41007241D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DA9404020F9FD41007241D7 /* LaunchScreen.storyboard */; };
+		9DA9404520F9FD41007241D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DA9404420F9FD41007241D7 /* main.m */; };
+		C662145DB67756F5E4510062 /* libPods-WYNetWork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 169AFDEC3967A5F1AF6F4DB2 /* libPods-WYNetWork.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		169AFDEC3967A5F1AF6F4DB2 /* libPods-WYNetWork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WYNetWork.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		725831B3789F5125E64B8AA9 /* Pods-WYNetWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYNetWork.release.xcconfig"; path = "Pods/Target Support Files/Pods-WYNetWork/Pods-WYNetWork.release.xcconfig"; sourceTree = "<group>"; };
+		8FF3B64ED308962724CF91C2 /* Pods-WYNetWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYNetWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYNetWork/Pods-WYNetWork.debug.xcconfig"; sourceTree = "<group>"; };
+		9D5E523420FB167D001223EB /* WYNetworkRequestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkRequestModel.m; sourceTree = "<group>"; };
+		9D5E523520FB167D001223EB /* WYNetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkConfig.m; sourceTree = "<group>"; };
+		9D5E523620FB167D001223EB /* WYNetworkRequestPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkRequestPool.m; sourceTree = "<group>"; };
+		9D5E523720FB167D001223EB /* WYNetworkCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkCacheManager.h; sourceTree = "<group>"; };
+		9D5E523820FB167D001223EB /* WYNetworkProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkProtocol.h; sourceTree = "<group>"; };
+		9D5E523920FB167D001223EB /* WYNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkManager.m; sourceTree = "<group>"; };
+		9D5E523A20FB167D001223EB /* WYNetworkCacheInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkCacheInfo.m; sourceTree = "<group>"; };
+		9D5E523B20FB167D001223EB /* WYNetworkRequestEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkRequestEngine.h; sourceTree = "<group>"; };
+		9D5E523C20FB167D001223EB /* WYNetworkUploadEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkUploadEngine.m; sourceTree = "<group>"; };
+		9D5E523D20FB167D001223EB /* WYImageScaleTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYImageScaleTool.h; sourceTree = "<group>"; };
+		9D5E523E20FB167D001223EB /* WYNetworkDownloadResumeDataInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkDownloadResumeDataInfo.m; sourceTree = "<group>"; };
+		9D5E523F20FB167D001223EB /* WYNetworkBaseEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkBaseEngine.h; sourceTree = "<group>"; };
+		9D5E524020FB167D001223EB /* WYNetworkUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkUtils.h; sourceTree = "<group>"; };
+		9D5E524120FB167D001223EB /* WYNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetwork.h; sourceTree = "<group>"; };
+		9D5E524220FB167D001223EB /* WYNetworkDownloadEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkDownloadEngine.h; sourceTree = "<group>"; };
+		9D5E524320FB167D001223EB /* WYNetworkRequestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkRequestModel.h; sourceTree = "<group>"; };
+		9D5E524420FB167D001223EB /* WYNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkManager.h; sourceTree = "<group>"; };
+		9D5E524520FB167D001223EB /* WYNetworkHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkHeader.h; sourceTree = "<group>"; };
+		9D5E524620FB167D001223EB /* WYNetworkCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkCacheManager.m; sourceTree = "<group>"; };
+		9D5E524720FB167D001223EB /* WYNetworkRequestPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkRequestPool.h; sourceTree = "<group>"; };
+		9D5E524820FB167D001223EB /* WYNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkConfig.h; sourceTree = "<group>"; };
+		9D5E524920FB167D001223EB /* WYNetworkUploadEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkUploadEngine.h; sourceTree = "<group>"; };
+		9D5E524A20FB167D001223EB /* WYNetworkRequestEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkRequestEngine.m; sourceTree = "<group>"; };
+		9D5E524B20FB167D001223EB /* WYNetworkCacheInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkCacheInfo.h; sourceTree = "<group>"; };
+		9D5E524C20FB167D001223EB /* WYNetworkDownloadEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkDownloadEngine.m; sourceTree = "<group>"; };
+		9D5E524D20FB167D001223EB /* WYNetworkUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkUtils.m; sourceTree = "<group>"; };
+		9D5E524E20FB167D001223EB /* WYNetworkBaseEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYNetworkBaseEngine.m; sourceTree = "<group>"; };
+		9D5E524F20FB167D001223EB /* WYNetworkDownloadResumeDataInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYNetworkDownloadResumeDataInfo.h; sourceTree = "<group>"; };
+		9D5E525020FB167D001223EB /* WYImageScaleTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYImageScaleTool.m; sourceTree = "<group>"; };
+		9DA9403220F9FD41007241D7 /* WYNetWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYNetWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DA9403520F9FD41007241D7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9DA9403620F9FD41007241D7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9DA9403820F9FD41007241D7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9DA9403920F9FD41007241D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DA9403C20F9FD41007241D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9DA9403E20F9FD41007241D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DA9404120F9FD41007241D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9DA9404320F9FD41007241D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DA9404420F9FD41007241D7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9DA9402F20F9FD41007241D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C662145DB67756F5E4510062 /* libPods-WYNetWork.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D158A752A94715C2ECEAF3F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FF3B64ED308962724CF91C2 /* Pods-WYNetWork.debug.xcconfig */,
+				725831B3789F5125E64B8AA9 /* Pods-WYNetWork.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9D5E523320FB167D001223EB /* WYNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				9D5E524120FB167D001223EB /* WYNetwork.h */,
+				9D5E524520FB167D001223EB /* WYNetworkHeader.h */,
+				9D5E524820FB167D001223EB /* WYNetworkConfig.h */,
+				9D5E523520FB167D001223EB /* WYNetworkConfig.m */,
+				9D5E524420FB167D001223EB /* WYNetworkManager.h */,
+				9D5E523920FB167D001223EB /* WYNetworkManager.m */,
+				9D5E524320FB167D001223EB /* WYNetworkRequestModel.h */,
+				9D5E523420FB167D001223EB /* WYNetworkRequestModel.m */,
+				9D5E523820FB167D001223EB /* WYNetworkProtocol.h */,
+				9D5E524720FB167D001223EB /* WYNetworkRequestPool.h */,
+				9D5E523620FB167D001223EB /* WYNetworkRequestPool.m */,
+				9D5E523720FB167D001223EB /* WYNetworkCacheManager.h */,
+				9D5E524620FB167D001223EB /* WYNetworkCacheManager.m */,
+				9D5E523B20FB167D001223EB /* WYNetworkRequestEngine.h */,
+				9D5E523C20FB167D001223EB /* WYNetworkUploadEngine.m */,
+				9D5E523D20FB167D001223EB /* WYImageScaleTool.h */,
+				9D5E525020FB167D001223EB /* WYImageScaleTool.m */,
+				9D5E524F20FB167D001223EB /* WYNetworkDownloadResumeDataInfo.h */,
+				9D5E523E20FB167D001223EB /* WYNetworkDownloadResumeDataInfo.m */,
+				9D5E523F20FB167D001223EB /* WYNetworkBaseEngine.h */,
+				9D5E524E20FB167D001223EB /* WYNetworkBaseEngine.m */,
+				9D5E524020FB167D001223EB /* WYNetworkUtils.h */,
+				9D5E524D20FB167D001223EB /* WYNetworkUtils.m */,
+				9D5E524920FB167D001223EB /* WYNetworkUploadEngine.h */,
+				9D5E524A20FB167D001223EB /* WYNetworkRequestEngine.m */,
+				9D5E524B20FB167D001223EB /* WYNetworkCacheInfo.h */,
+				9D5E523A20FB167D001223EB /* WYNetworkCacheInfo.m */,
+				9D5E524220FB167D001223EB /* WYNetworkDownloadEngine.h */,
+				9D5E524C20FB167D001223EB /* WYNetworkDownloadEngine.m */,
+			);
+			path = WYNetwork;
+			sourceTree = "<group>";
+		};
+		9DA9402920F9FD41007241D7 = {
+			isa = PBXGroup;
+			children = (
+				9DA9403420F9FD41007241D7 /* WYNetWork */,
+				9DA9403320F9FD41007241D7 /* Products */,
+				5D158A752A94715C2ECEAF3F /* Pods */,
+				B615EBEA6DF9AD8C73711BEF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		9DA9403320F9FD41007241D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DA9403220F9FD41007241D7 /* WYNetWork.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9DA9403420F9FD41007241D7 /* WYNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				9D5E523320FB167D001223EB /* WYNetwork */,
+				9DA9403520F9FD41007241D7 /* AppDelegate.h */,
+				9DA9403620F9FD41007241D7 /* AppDelegate.m */,
+				9DA9403820F9FD41007241D7 /* ViewController.h */,
+				9DA9403920F9FD41007241D7 /* ViewController.m */,
+				9DA9403B20F9FD41007241D7 /* Main.storyboard */,
+				9DA9403E20F9FD41007241D7 /* Assets.xcassets */,
+				9DA9404020F9FD41007241D7 /* LaunchScreen.storyboard */,
+				9DA9404320F9FD41007241D7 /* Info.plist */,
+				9DA9404420F9FD41007241D7 /* main.m */,
+			);
+			path = WYNetWork;
+			sourceTree = "<group>";
+		};
+		B615EBEA6DF9AD8C73711BEF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				169AFDEC3967A5F1AF6F4DB2 /* libPods-WYNetWork.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9DA9403120F9FD41007241D7 /* WYNetWork */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DA9404820F9FD41007241D7 /* Build configuration list for PBXNativeTarget "WYNetWork" */;
+			buildPhases = (
+				1F2157DBFED2C7EDAAA6B70A /* [CP] Check Pods Manifest.lock */,
+				9DA9402E20F9FD41007241D7 /* Sources */,
+				9DA9402F20F9FD41007241D7 /* Frameworks */,
+				9DA9403020F9FD41007241D7 /* Resources */,
+				4CF87EE87C0B79DFE78BF963 /* [CP] Embed Pods Frameworks */,
+				FFF33E78A7FE6D91EB803C48 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WYNetWork;
+			productName = WYNetWork;
+			productReference = 9DA9403220F9FD41007241D7 /* WYNetWork.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9DA9402A20F9FD41007241D7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = JuYingDengLing;
+				TargetAttributes = {
+					9DA9403120F9FD41007241D7 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9DA9402D20F9FD41007241D7 /* Build configuration list for PBXProject "WYNetWork" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9DA9402920F9FD41007241D7;
+			productRefGroup = 9DA9403320F9FD41007241D7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9DA9403120F9FD41007241D7 /* WYNetWork */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9DA9403020F9FD41007241D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DA9404220F9FD41007241D7 /* LaunchScreen.storyboard in Resources */,
+				9DA9403F20F9FD41007241D7 /* Assets.xcassets in Resources */,
+				9DA9403D20F9FD41007241D7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F2157DBFED2C7EDAAA6B70A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4CF87EE87C0B79DFE78BF963 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYNetWork/Pods-WYNetWork-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFF33E78A7FE6D91EB803C48 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYNetWork/Pods-WYNetWork-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9DA9402E20F9FD41007241D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D5E525920FB167D001223EB /* WYNetworkRequestEngine.m in Sources */,
+				9DA9403A20F9FD41007241D7 /* ViewController.m in Sources */,
+				9D5E525720FB167D001223EB /* WYNetworkDownloadResumeDataInfo.m in Sources */,
+				9D5E525520FB167D001223EB /* WYNetworkCacheInfo.m in Sources */,
+				9D5E525220FB167D001223EB /* WYNetworkConfig.m in Sources */,
+				9D5E525820FB167D001223EB /* WYNetworkCacheManager.m in Sources */,
+				9D5E525D20FB167D001223EB /* WYImageScaleTool.m in Sources */,
+				9D5E525320FB167D001223EB /* WYNetworkRequestPool.m in Sources */,
+				9DA9404520F9FD41007241D7 /* main.m in Sources */,
+				9D5E525420FB167D001223EB /* WYNetworkManager.m in Sources */,
+				9D5E525A20FB167D001223EB /* WYNetworkDownloadEngine.m in Sources */,
+				9D5E525C20FB167D001223EB /* WYNetworkBaseEngine.m in Sources */,
+				9D5E525B20FB167D001223EB /* WYNetworkUtils.m in Sources */,
+				9D5E525120FB167D001223EB /* WYNetworkRequestModel.m in Sources */,
+				9DA9403720F9FD41007241D7 /* AppDelegate.m in Sources */,
+				9D5E525620FB167D001223EB /* WYNetworkUploadEngine.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9DA9403B20F9FD41007241D7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DA9403C20F9FD41007241D7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9DA9404020F9FD41007241D7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9DA9404120F9FD41007241D7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9DA9404620F9FD41007241D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9DA9404720F9FD41007241D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9DA9404920F9FD41007241D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FF3B64ED308962724CF91C2 /* Pods-WYNetWork.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S29X6N2TF3;
+				INFOPLIST_FILE = WYNetWork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jydltech.www.WYNetWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9DA9404A20F9FD41007241D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 725831B3789F5125E64B8AA9 /* Pods-WYNetWork.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S29X6N2TF3;
+				INFOPLIST_FILE = WYNetWork/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jydltech.www.WYNetWork;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9DA9402D20F9FD41007241D7 /* Build configuration list for PBXProject "WYNetWork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DA9404620F9FD41007241D7 /* Debug */,
+				9DA9404720F9FD41007241D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DA9404820F9FD41007241D7 /* Build configuration list for PBXNativeTarget "WYNetWork" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DA9404920F9FD41007241D7 /* Debug */,
+				9DA9404A20F9FD41007241D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9DA9402A20F9FD41007241D7 /* Project object */;
+}

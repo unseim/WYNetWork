@@ -71,9 +71,10 @@ import "WYNetwork.h"
 
 
 ### 网络请求
-* 该框架支持GET，POST，PUT，DELETE四种网络请求，由 `WYNetworkRequestManager` 实现。
-* 所有这些普通的网络请求都支持写入和读取缓存，但是默认只有GET支持自动缓存，当在发送错误的时候（如：网络断开）自动加载缓存数据，其他默认都不支持。
-* 用户可以自行决定是否写入、读取缓存已以及设置缓存时间，默认缓存时间为30天。
+* 该框架支持GET，POST，PUT，DELETE四种网络请求，由 `WYNetworkRequestManager` 实现
+* 所有这些普通的网络请求都支持写入和读取缓存，但是默认只有GET支持自动缓存，当在发送错误的时候（如：网络断开）自动加载缓存数据，其他默认都不支持
+* 支持用户自行决定是否写入、读取缓存已以及设置缓存时间，默认缓存时间为30天
+* 支持用户自行选择请求序列化方式
 
 
 #### 基本用法
@@ -140,6 +141,141 @@ import "WYNetwork.h"
 缓存管理是由 `WYNetworkCacheManager` 单列来实现的，分为缓存的读取，删除和计算。
 
 #### 读取缓存
+
+**单个缓存的读取**
+
+如果知道这个缓存对应的请求url，method，请求体，就能尝试获取它所对应的缓存对象
+
+```
+[[WYNetworkCacheManager sharedManager] loadCacheWithUrl:@"index/test"
+                                                     method:@"GET"
+                                                 parameters:@{@"page"    : @(0),
+                                                              @"version" : @"1.0" }
+                                            completionBlock:^(id  _Nullable cacheObject)
+     {
+         NSLog(@"cacheObject = %@", cacheObject);
+     }];
+     
+```
+
+**多个缓存的读取：**
+
+如果有些请求使用的是同一个url（但是不同的请求方法或者参数）并做了缓存，那么通过如下方法可以获取它们的缓存：
+
+
+```
+[[WYNetworkCacheManager sharedManager] loadCacheWithUrl:@"index/test"
+                                            completionBlock:^(NSArray * _Nullable cacheArr)
+    {
+        NSLog(@"cacheArr = %@", cacheArr);
+    }];
+```
+
+
+#### 清除缓存
+**清除单个缓存**
+
+同上，如果知道这个缓存对应的请求url，method，请求体，就能删除它所对应的缓存对象
+```
+[[WYNetworkCacheManager sharedManager] clearCacheWithUrl:@"index/test"
+                                             completionBlock:^(BOOL isSuccess)
+     {
+         if (isSuccess) {
+             NSLog(@"删除成功");
+         }
+     }];
+```
+
+**删除多个缓存：**
+
+同上，如果有些请求使用的是同一个url（但是不同的请求方法或者参数）并做了缓存，那么通过如下方法可以将它们删除：
+
+
+```
+[[WYNetworkCacheManager sharedManager] clearCacheWithUrl:@"index/test"
+                                                      method:@"GET"
+                                                  parameters:@{@"page"    : @(0),
+                                                               @"version" : @"1.0" }
+                                             completionBlock:^(BOOL isSuccess)
+     {
+         if (isSuccess) {
+             NSLog(@"删除成功");
+         }
+     }];
+```
+
+
+**删除所有缓存：**
+
+```
+[[WYNetworkCacheManager sharedManager] clearAllCacheCompletionBlock:^(BOOL isSuccess)
+    {
+        if (isSuccess) {
+            NSLog(@"删除成功");
+        }
+    }];
+```
+
+**缓存计算**
+
+* fileCount       文件数量
+* totalSize       文件字节大小
+* totalSizeString 带有KB和MB转化的字符串
+
+```
+[[WYNetworkCacheManager sharedManager] calculateAllCacheSizecompletionBlock:^(NSUInteger fileCount, NSUInteger totalSize, NSString * _Nonnull totalSizeString)
+     {
+         
+     }];
+```
+
+### 图像上传
+
+* 由 `WYNetworkUploadManager` 类的单例实现，支持上传单个与多个图像
+* 内置三张压缩算法，不同大小的图像下压缩效率各有千秋
+* 支持压缩最小值设置，低于最小值便不会继续压缩，默认为150kb大小
+
+
+```
+* 仿微信压缩
+ 宽高均 <= 1280px，图片尺寸大小保持不变
+ 宽或高 > 1280px && 宽高比 <= 2，取较大值等于1280px，较小值等比例压缩
+ 宽或高 > 1280px && 宽高比 > 2 && 宽或高 < 1280px，图片尺寸大小保持不变
+ 宽高均 > 1280px && 宽高比 > 2，取较小值等于1280px，较大值等比例压缩
+ 
+ 
+* 等比例缩小图像压缩
+等比例缩小图像进行压缩，图像宽度参照 1242px 进行等比例压缩
+
+
+* 二分法压缩图像到绝对值
+采用二分法，压缩到指定大小，如果图像本身就很大，那么压缩可能会有失真
+
+```
+
+**上传单张图片**
+
+* 默认采用仿微信的压缩方式进行上传
+* 默认最低压缩比率为150kb
+
+
+发起一个普通上传图像的请求
+```
+[[WYNetworkManager sharedManager] sendUploadImageRequest:WYHTTPRequestSerializer
+                                                         url:@"upload/image"
+                                                  parameters:nil
+                                                       image:image
+                                                        name:@"file"
+                                                    progress:^(NSProgress *uploadProgress)
+     {
+         
+     } success:^(id responseObject) {
+         
+     } failure:^(NSURLSessionTask *task, NSError *error, NSInteger statusCode, NSArray<UIImage *> *uploadFailedImages) {
+         
+     }];
+```
+
 
 
 

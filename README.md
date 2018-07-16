@@ -23,7 +23,7 @@
 ## 使用方法
 手动将 `WYNetwork` 文件夹拖入到工程里面
 ```
-import "SJNetwork.h"
+import "WYNetwork.h"
 ```
 
 ## 功能介绍

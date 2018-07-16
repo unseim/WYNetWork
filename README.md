@@ -33,13 +33,12 @@ import "WYNetwork.h"
 ```
 [WYNetworkConfig sharedConfig].baseUrl = @"http://116.22.115.104:8181";
 
-添加的服务器地址会自动添加到所有的请求中；
-如果原来不存在，则添加；如果原来存在，则替换原有的地址。
+*添加的服务器地址会自动添加到所有的请求中；
+*如果原来不存在，则添加；如果原来存在，则替换原有的地址。
 ```
 #### 默认参数
 ```
-[WYNetworkConfig sharedConfig].defailtParameters = @{@"version":@"1.0",
-													@"platform":@"iOS"};
+[WYNetworkConfig sharedConfig].defailtParameters = @{@"version":@"1.0", @"platform":@"iOS"};
 													
 *默认参数会拼接在所有请求的请求体中；
 *如果是GET请求，则拼接在url里面。

@@ -13,7 +13,7 @@
 |WYNetworkManager|与业务层直接对接的类，包含了除配置接口外所有关于网络请求功能的接口|
 |WYNetworkBaseEngine|所有负责发送请求类的基类|
 |WYNetworkRequestEngine|发送（GET,POST,PUT,DELETE）请求的类：支持设置缓存有效期，读、写和清理缓存|
-|WYImageScaleTool|图像压缩方式|
+|WYImageScaleTool|图像压缩类：图像的压缩方式|
 |WYNetworkUploadEngine|发送上传请求的类：支持设置图片类型和压缩上传，批量上传|
 |WYNetworkDownloadEngine|发送下载请求的类：支持断点续传和后台下载|
 |WYNetworkRequestModel|请求对象类：持有某个网络请求的一些数据；比如请求url，请求体等）|
@@ -253,13 +253,14 @@ import "WYNetwork.h"
 
 ```
 
-**上传单张图片**
+#### 上传单张图片
 
 * 默认采用仿微信的压缩方式进行上传
 * 默认最低压缩比率为150kb
+* 默认上传图像格式为png格式
 
 
-发起一个普通上传图像的请求
+**发起一个上传图像的请求**
 ```
 [[WYNetworkManager sharedManager] sendUploadImageRequest:WYHTTPRequestSerializer
                                                          url:@"upload/image"
@@ -277,5 +278,50 @@ import "WYNetwork.h"
 ```
 
 
+**发起一个完全自定义的上传图像的请求**
+
+用户可以自定义图像的压缩方式、压缩大小以及图像类型，更方便在不同的场景下使用
+
+```
+[[WYNetworkManager sharedManager] sendUploadImageRequest:WYHTTPRequestSerializer
+                                                         url:@"https://upload.api/image"
+                                                  parameters:@{@"id" : @"232657321769854"}
+                                                compressType:WYUploadCompressEqualProportion
+                                                       image:image
+                                                compressSize:100
+                                                        name:@"file"
+                                                    mimeType:@"jpg"
+                                                    progress:^(NSProgress *uploadProgress)
+     {
+         
+     } success:^(id responseObject) {
+         
+     } failure:^(NSURLSessionTask *task, NSError *error, NSInteger statusCode, NSArray<UIImage *> *uploadFailedImages) {
+         
+     }];
+```
+
+
+**忽略设置过的baseUrl**
+
+考虑到上传图片的服务器可能与普通请求的服务器不同，特意增加了一个ignoreBaseUrl参数
+如果该BOOL设置为YES，则在WYNetworkConfig里面设置的baseUrl就会被忽略掉
+
+```
+[[WYNetworkManager sharedManager] sendUploadImageRequest:WYHTTPRequestSerializer
+                                                         url:@"https://upload.api/image"
+                                               ignoreBaseUrl:YES
+                                                  parameters:@{@"id" : @"232657321769854"}
+                                                       image:image
+                                                        name:@"file"
+                                                    progress:^(NSProgress *uploadProgress)
+     {
+         
+     } success:^(id responseObject) {
+         
+     } failure:^(NSURLSessionTask *task, NSError *error, NSInteger statusCode, NSArray<UIImage *> *uploadFailedImages) {
+         
+     }];
+```
 
 

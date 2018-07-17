@@ -28,7 +28,7 @@
 // Custom headers, default is nil
 @property (nonatomic, readonly, strong) NSDictionary * _Nullable customHeaders;
 
-// Request timeout seconds, default is 20 (unit is second)
+// Request timeout seconds, default is 30 (unit is second)
 @property (nonatomic, assign) NSTimeInterval timeoutSeconds;
 
 // If debugMode is set to be YES, then print all detail log

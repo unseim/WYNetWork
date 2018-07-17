@@ -97,6 +97,10 @@
     {
         _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
         _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+    } else {
+        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     
     //default method is POST
@@ -110,14 +114,24 @@
     
     if (ignoreBaseUrl) {
         
-        completeUrlStr = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+        completeUrlStr = (NSString *)
+        CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                  (CFStringRef)url,
+                                                                  (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                                  NULL,
+                                                                  kCFStringEncodingUTF8));
         requestIdentifer = [WYNetworkUtils generateRequestIdentiferWithBaseUrlStr:nil
                                                                    requestUrlStr:url
                                                                        methodStr:methodStr
                                                                       parameters:parameters];
     }else{
         
-        NSString *encodingUrlString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+        NSString *encodingUrlString = (NSString *)
+        CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                  (CFStringRef)url,
+                                                                  (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                                  NULL,
+                                                                  kCFStringEncodingUTF8));
         completeUrlStr   = [[WYNetworkConfig sharedConfig].baseUrl stringByAppendingPathComponent:encodingUrlString];
         requestIdentifer = [WYNetworkUtils generateRequestIdentiferWithBaseUrlStr:[WYNetworkConfig sharedConfig].baseUrl
                                                                    requestUrlStr:url
@@ -268,7 +282,11 @@
 
 - (NSData *)compressOfImageWithImage:(UIImage *)image maxSize:(float)maxSize compressType:(WYUploadCompressType)compressType{
     
-    if (compressType == WYUploadCompressWeiChat)
+    if (compressType == WYWYUploadCompresArtwork)
+    {
+        return UIImageJPEGRepresentation(image, 1);
+        
+    } else if (compressType == WYUploadCompressWeiChat)
     {
         return [WYImageScaleTool compressOfImageWithWeiChat:image maxSize:maxSize];
         

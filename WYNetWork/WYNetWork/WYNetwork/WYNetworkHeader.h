@@ -17,7 +17,7 @@
 
 //Log used to debug
 #ifdef DEBUG
-#define WYNetworkLog(...) NSLog(@"%s line number:%d \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#define WYNetworkLog(...) printf("\n%s  ---->  %s\n",__TIME__,[[NSString stringWithFormat:__VA_ARGS__]UTF8String]);
 #else
 #define WYNetworkLog(...)
 #endif
@@ -95,7 +95,8 @@ typedef NS_ENUM(NSUInteger, WYNetworkCacheType) {
 /** 图片压缩策略 */
 typedef NS_ENUM(NSUInteger, WYUploadCompressType) {
     
-    WYUploadCompressWeiChat = 40000,        //  仿照微信压缩      （仿照微信的压缩比例）
+    WYWYUploadCompresArtwork = 40000,       //  原图上传，不进行压缩
+    WYUploadCompressWeiChat,                //  仿照微信压缩      （仿照微信的压缩比例）
     WYUploadCompressEqualProportion,        //  图像等比例缩小压缩 （宽度参照 1242 进行等比例缩小）
     WYUploadCompressTwoPoints               //  采用二分法压缩    （最接近压缩比例）
 };

@@ -137,7 +137,12 @@ static dispatch_queue_t WY_cache_io_queue() {
               parameters:(id _Nullable)parameters
          completionBlock:(WYLoadCacheCompletionBlock _Nullable)completionBlock{
     
-    NSString *encodingUrlString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+    NSString *encodingUrlString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)url,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
     NSString *requestIdentifer = [WYNetworkUtils generateRequestIdentiferWithBaseUrlStr:[WYNetworkConfig sharedConfig].baseUrl
                                                                           requestUrlStr:encodingUrlString
                                                                               methodStr:method
@@ -372,7 +377,12 @@ static dispatch_queue_t WY_cache_io_queue() {
                parameters:(id _Nullable)parameters
           completionBlock:(WYClearCacheCompletionBlock _Nullable)completionBlock{
     
-    NSString *encodingUrlString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+    NSString *encodingUrlString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)url,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
     NSString *requestIdentifer = [WYNetworkUtils generateRequestIdentiferWithBaseUrlStr:[WYNetworkConfig sharedConfig].baseUrl
                                                                           requestUrlStr:encodingUrlString
                                                                               methodStr:method

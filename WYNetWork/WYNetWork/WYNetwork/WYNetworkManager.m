@@ -66,6 +66,8 @@
 }
 
 
+
+
 #pragma mark- ============== Request API using GET method ==============
 
 
@@ -74,12 +76,13 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodGET
                          parameters:nil
                           cacheType:WYNetworkCacheTypeCacheNetwork
-                      cacheDuration:0
+                      cacheDuration:30
                             success:successBlock
                             failure:failureBlock];
     
@@ -94,6 +97,7 @@
             parameters:(id _Nullable)parameters
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -115,6 +119,7 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodGET
@@ -135,6 +140,7 @@
          cacheDuration:(NSTimeInterval)cacheDuration
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -158,6 +164,7 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodGET
@@ -167,6 +174,7 @@
                             success:successBlock
                             failure:failureBlock];
 }
+
 
 
 
@@ -177,6 +185,7 @@
              parameters:(id _Nullable)parameters
                 success:(WYSuccessBlock _Nullable)successBlock
                 failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -198,12 +207,13 @@
                 success:(WYSuccessBlock _Nullable)successBlock
                 failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodPOST
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
-                      cacheDuration:0
+                          cacheType:cacheType
+                      cacheDuration:30
                             success:successBlock
                             failure:failureBlock];
 }
@@ -217,11 +227,12 @@
                 success:(WYSuccessBlock _Nullable)successBlock
                 failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodPOST
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
+                          cacheType:WYNetworkCacheTypeCacheNetwork
                       cacheDuration:cacheDuration
                             success:successBlock
                             failure:failureBlock];
@@ -230,14 +241,14 @@
 
 
 
-
 - (void)sendPostRequest:(WYRequestSerializer)serializer
                     url:(NSString * _Nonnull)url
              parameters:(id _Nullable)parameters
-           cacheType:(WYNetworkCacheType)cacheType
+              cacheType:(WYNetworkCacheType)cacheType
           cacheDuration:(NSTimeInterval)cacheDuration
                 success:(WYSuccessBlock _Nullable)successBlock
                 failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -261,11 +272,12 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodPUT
                          parameters:parameters
-                          cacheType:NO
+                          cacheType:WYNetworkCacheTypeNetworkOnly
                       cacheDuration:0
                             success:successBlock
                             failure:failureBlock];
@@ -281,12 +293,13 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodPUT
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
-                      cacheDuration:0
+                          cacheType:cacheType
+                      cacheDuration:30
                             success:successBlock
                             failure:failureBlock];
 }
@@ -301,11 +314,12 @@
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodPUT
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
+                          cacheType:WYNetworkCacheTypeCacheNetwork
                       cacheDuration:cacheDuration
                             success:successBlock
                             failure:failureBlock];
@@ -321,6 +335,7 @@
          cacheDuration:(NSTimeInterval)cacheDuration
                success:(WYSuccessBlock _Nullable)successBlock
                failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -343,11 +358,12 @@
                   success:(WYSuccessBlock _Nullable)successBlock
                   failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodDELETE
                          parameters:parameters
-                         cacheType:WYNetworkCacheTypeNetworkOnly
+                          cacheType:WYNetworkCacheTypeNetworkOnly
                       cacheDuration:0
                             success:successBlock
                             failure:failureBlock];
@@ -362,12 +378,13 @@
                   success:(WYSuccessBlock _Nullable)successBlock
                   failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodDELETE
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
-                      cacheDuration:0
+                          cacheType:cacheType
+                      cacheDuration:30
                             success:successBlock
                             failure:failureBlock];
     
@@ -383,11 +400,12 @@
                   success:(WYSuccessBlock _Nullable)successBlock
                   failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:WYRequestMethodDELETE
                          parameters:parameters
-                          cacheType:WYNetworkCacheTypeNetworkOnly
+                          cacheType:WYNetworkCacheTypeCacheNetwork
                       cacheDuration:cacheDuration
                             success:successBlock
                             failure:failureBlock];
@@ -403,6 +421,7 @@
             cacheDuration:(NSTimeInterval)cacheDuration
                   success:(WYSuccessBlock _Nullable)successBlock
                   failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -427,6 +446,7 @@
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     if (parameters) {
         
         [self.requestEngine sendRequest:serializer
@@ -450,8 +470,6 @@
                                 failure:failureBlock];
     }
 }
-
-
 
 
 
@@ -462,6 +480,7 @@
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     if (parameters) {
         
         [self.requestEngine sendRequest:serializer
@@ -469,7 +488,7 @@
                                  method:WYRequestMethodPOST
                              parameters:parameters
                               cacheType:cacheType
-                          cacheDuration:0
+                          cacheDuration:30
                                 success:successBlock
                                 failure:failureBlock];
         
@@ -488,13 +507,13 @@
 
 
 
-
 - (void)sendRequest:(WYRequestSerializer)serializer
                 url:(NSString * _Nonnull)url
          parameters:(id _Nullable)parameters
       cacheDuration:(NSTimeInterval)cacheDuration
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     if (parameters) {
         
@@ -520,7 +539,6 @@
                                 failure:failureBlock];
     }
 }
-
 
 
 
@@ -568,6 +586,7 @@
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
     
+    
     [self.requestEngine sendRequest:serializer
                                 url:url
                              method:method
@@ -580,7 +599,6 @@
 
 
 
-
 - (void)sendRequest:(WYRequestSerializer)serializer
                 url:(NSString * _Nonnull)url
              method:(WYRequestMethod)method
@@ -588,6 +606,7 @@
           cacheType:(WYNetworkCacheType)cacheType
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -601,7 +620,6 @@
 
 
 
-
 - (void)sendRequest:(WYRequestSerializer)serializer
                 url:(NSString * _Nonnull)url
              method:(WYRequestMethod)method
@@ -609,6 +627,7 @@
       cacheDuration:(NSTimeInterval)cacheDuration
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -622,7 +641,6 @@
 
 
 
-
 - (void)sendRequest:(WYRequestSerializer)serializer
                 url:(NSString * _Nonnull)url
              method:(WYRequestMethod)method
@@ -631,6 +649,7 @@
       cacheDuration:(NSTimeInterval)cacheDuration
             success:(WYSuccessBlock _Nullable)successBlock
             failure:(WYFailureBlock _Nullable)failureBlock{
+    
     
     [self.requestEngine sendRequest:serializer
                                 url:url
@@ -673,6 +692,30 @@
 }
 
 
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                          name:(NSString * _Nonnull)name
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+    
+    
+    [self.uploadEngine sendUploadImagesRequest:serializer
+                                           url:url
+                                 ignoreBaseUrl:NO
+                                    parameters:parameters
+                                        images:@[image]
+                                  compressSize:150
+                                  compressType:compressType
+                                          name:name
+                                      mimeType:@"png"
+                                      progress:uploadProgressBlock
+                                       success:uploadSuccessBlock
+                                       failure:uploadFailureBlock];
+}
 
 
 
@@ -704,53 +747,25 @@
 
 
 
-
-- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
-                            url:(NSString * _Nonnull)url
-                     parameters:(id _Nullable)parameters
-                         images:(NSArray<UIImage *> * _Nonnull)images
-                           name:(NSString * _Nonnull)name
-                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
-                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
-                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
-    
-    
-    [self.uploadEngine sendUploadImagesRequest:serializer
-                                           url:url
-                                 ignoreBaseUrl:NO
-                                    parameters:parameters
-                                        images:images
-                                  compressSize:150
-                                  compressType:WYUploadCompressWeiChat
-                                          name:name
-                                      mimeType:@"png"
-                                      progress:uploadProgressBlock
-                                       success:uploadSuccessBlock
-                                       failure:uploadFailureBlock];
-    
-}
-
-
-
-
-- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
-                            url:(NSString * _Nonnull)url
-                  ignoreBaseUrl:(BOOL)ignoreBaseUrl
-                     parameters:(id _Nullable)parameters
-                         images:(NSArray<UIImage *> * _Nonnull)images
-                           name:(NSString * _Nonnull)name
-                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
-                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
-                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                 ignoreBaseUrl:(BOOL)ignoreBaseUrl
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                          name:(NSString * _Nonnull)name
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
     
     
     [self.uploadEngine sendUploadImagesRequest:serializer
                                            url:url
                                  ignoreBaseUrl:ignoreBaseUrl
                                     parameters:parameters
-                                        images:images
+                                        images:@[image]
                                   compressSize:150
-                                  compressType:WYUploadCompressWeiChat
+                                  compressType:compressType
                                           name:name
                                       mimeType:@"png"
                                       progress:uploadProgressBlock
@@ -761,16 +776,18 @@
 
 
 
-
 - (void)sendUploadImageRequest:(WYRequestSerializer)serializer
                            url:(NSString * _Nonnull)url
                     parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
                          image:(UIImage * _Nonnull)image
                   compressSize:(float)compressSize
                           name:(NSString * _Nonnull)name
+                      mimeType:(NSString * _Nullable)mimeType
                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+    
     
     [self.uploadEngine sendUploadImagesRequest:serializer
                                            url:url
@@ -778,16 +795,15 @@
                                     parameters:parameters
                                         images:@[image]
                                   compressSize:compressSize
-                                  compressType:WYUploadCompressWeiChat
+                                  compressType:compressType
                                           name:name
-                                      mimeType:@"png"
+                                      mimeType:mimeType
                                       progress:uploadProgressBlock
                                        success:uploadSuccessBlock
                                        failure:uploadFailureBlock];
     
     
 }
-
 
 
 
@@ -795,9 +811,11 @@
                            url:(NSString * _Nonnull)url
                  ignoreBaseUrl:(BOOL)ignoreBaseUrl
                     parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
                          image:(UIImage * _Nonnull)image
                   compressSize:(float)compressSize
                           name:(NSString * _Nonnull)name
+                      mimeType:(NSString * _Nullable)mimeType
                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
@@ -809,35 +827,7 @@
                                     parameters:parameters
                                         images:@[image]
                                   compressSize:compressSize
-                                  compressType:WYUploadCompressWeiChat
-                                          name:name
-                                      mimeType:@"png"
-                                      progress:uploadProgressBlock
-                                       success:uploadSuccessBlock
-                                       failure:uploadFailureBlock];
-}
-
-
-
-
-- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
-                            url:(NSString * _Nonnull)url
-                     parameters:(id _Nullable)parameters
-                         images:(NSArray<UIImage *> * _Nonnull)images
-                   compressSize:(float)compressSize
-                           name:(NSString * _Nonnull)name
-                       mimeType:(NSString * _Nullable)mimeType
-                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
-                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
-                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
-    
-    [self.uploadEngine sendUploadImagesRequest:serializer
-                                           url:url
-                                 ignoreBaseUrl:NO
-                                    parameters:parameters
-                                        images:images
-                                  compressSize:compressSize
-                                  compressType:WYUploadCompressWeiChat
+                                  compressType:compressType
                                           name:name
                                       mimeType:mimeType
                                       progress:uploadProgressBlock
@@ -850,8 +840,64 @@
 
 - (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
                             url:(NSString * _Nonnull)url
+                     parameters:(id _Nullable)parameters
+                         images:(NSArray<UIImage *> * _Nonnull)images
+                           name:(NSString * _Nonnull)name
+                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+    
+    
+    [self.uploadEngine sendUploadImagesRequest:serializer
+                                           url:url
+                                 ignoreBaseUrl:NO
+                                    parameters:parameters
+                                        images:images
+                                  compressSize:150
+                                  compressType:WYUploadCompressWeiChat
+                                          name:name
+                                      mimeType:@"png"
+                                      progress:uploadProgressBlock
+                                       success:uploadSuccessBlock
+                                       failure:uploadFailureBlock];
+    
+}
+
+
+
+- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
+                            url:(NSString * _Nonnull)url
                   ignoreBaseUrl:(BOOL)ignoreBaseUrl
                      parameters:(id _Nullable)parameters
+                         images:(NSArray<UIImage *> * _Nonnull)images
+                           name:(NSString * _Nonnull)name
+                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+    
+    
+    [self.uploadEngine sendUploadImagesRequest:serializer
+                                           url:url
+                                 ignoreBaseUrl:ignoreBaseUrl
+                                    parameters:parameters
+                                        images:images
+                                  compressSize:150
+                                  compressType:WYUploadCompressWeiChat
+                                          name:name
+                                      mimeType:@"png"
+                                      progress:uploadProgressBlock
+                                       success:uploadSuccessBlock
+                                       failure:uploadFailureBlock];
+    
+}
+
+
+
+
+- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
+                            url:(NSString * _Nonnull)url
+                     parameters:(id _Nullable)parameters
+                   compressType:(WYUploadCompressType)compressType
                          images:(NSArray<UIImage *> * _Nonnull)images
                    compressSize:(float)compressSize
                            name:(NSString * _Nonnull)name
@@ -860,13 +906,44 @@
                         success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
                         failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
     
+    
+    [self.uploadEngine sendUploadImagesRequest:serializer
+                                           url:url
+                                 ignoreBaseUrl:NO
+                                    parameters:parameters
+                                        images:images
+                                  compressSize:compressSize
+                                  compressType:compressType
+                                          name:name
+                                      mimeType:mimeType
+                                      progress:uploadProgressBlock
+                                       success:uploadSuccessBlock
+                                       failure:uploadFailureBlock];
+}
+
+
+
+- (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
+                            url:(NSString * _Nonnull)url
+                  ignoreBaseUrl:(BOOL)ignoreBaseUrl
+                     parameters:(id _Nullable)parameters
+                   compressType:(WYUploadCompressType)compressType
+                         images:(NSArray<UIImage *> * _Nonnull)images
+                   compressSize:(float)compressSize
+                           name:(NSString * _Nonnull)name
+                       mimeType:(NSString * _Nullable)mimeType
+                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock{
+    
+    
     [self.uploadEngine sendUploadImagesRequest:serializer
                                            url:url
                                  ignoreBaseUrl:ignoreBaseUrl
                                     parameters:parameters
                                         images:images
                                   compressSize:compressSize
-                                  compressType:WYUploadCompressWeiChat
+                                  compressType:compressType
                                           name:name
                                       mimeType:mimeType
                                       progress:uploadProgressBlock
@@ -879,8 +956,7 @@
 
 #pragma mark- ============== Request API downloading ==============
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
                     success:(WYDownloadSuccessBlock _Nullable)downloadSuccessBlock
@@ -899,8 +975,7 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
@@ -922,8 +997,7 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
@@ -944,8 +1018,7 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
@@ -967,13 +1040,13 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
           backgroundSupport:(BOOL)backgroundSupport
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
                     success:(WYDownloadSuccessBlock _Nullable)downloadSuccessBlock
                     failure:(WYDownloadFailureBlock _Nullable)downloadFailureBlock{
+    
     
     [self.downloadEngine sendDownloadRequest:url
                                ignoreBaseUrl:NO
@@ -989,14 +1062,14 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
           backgroundSupport:(BOOL)backgroundSupport
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
                     success:(WYDownloadSuccessBlock _Nullable)downloadSuccessBlock
                     failure:(WYDownloadFailureBlock _Nullable)downloadFailureBlock{
+    
     
     [self.downloadEngine sendDownloadRequest:url
                                ignoreBaseUrl:ignoreBaseUrl
@@ -1012,8 +1085,7 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
           backgroundSupport:(BOOL)backgroundSupport
@@ -1036,8 +1108,7 @@
 
 
 
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable

@@ -8,12 +8,11 @@
 
 #import "WYNetworkUtils.h"
 #import <CommonCrypto/CommonDigest.h>
-
+#import "WYNetworkHeader.h"
 
 #define CC_MD5_DIGEST_LENGTH    16          /* digest length in bytes */
 #define CC_MD5_BLOCK_BYTES      64          /* block size in bytes */
 #define CC_MD5_BLOCK_LONG       (CC_MD5_BLOCK_BYTES / sizeof(CC_LONG))
-
 
 
 NSString * const WYNetworkCacheBaseFolderName = @"WYNetworkCache";
@@ -120,7 +119,7 @@ NSString * const WYNetworkDownloadResumeDataInfoFileSuffix = @"resumeInfo";
     }
     
     NSString *requestIdentifer = [NSString stringWithFormat:@"%@_%@_%@_%@",host_md5,url_md5,method_md5,parameters_md5];
-//    NSLog(@"请求接口：%@%@%@", baseUrlStr,requestUrlStr,paramsStr);
+//    WYNetworkLog(@"请求接口：%@%@%@", baseUrlStr,requestUrlStr,paramsStr);
     return requestIdentifer;
     
 }
@@ -274,7 +273,13 @@ NSString * const WYNetworkDownloadResumeDataInfoFileSuffix = @"resumeInfo";
                                                      error:nil];
     
     NSString *jsonStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    return jsonStr;
+    NSString *encodingJsonString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)jsonStr,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
+    return encodingJsonString;
 }
 
 

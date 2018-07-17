@@ -28,7 +28,7 @@ import "WYNetwork.h"
 
 ## 功能介绍
 ### 基础配置
-网络配置由 `WYNetworkConfig` 来完成，因为是单利，所以可以在项目任何地方来使用。
+网络配置由 `WYNetworkConfig` 类管理，因为是单利，所以可以在项目任何地方来使用。
 #### 服务器地址
 ```
 [WYNetworkConfig sharedConfig].baseUrl = @"http://116.22.115.104:8181";
@@ -70,7 +70,7 @@ import "WYNetwork.h"
 
 
 ### 网络请求
-* 该框架支持GET，POST，PUT，DELETE四种网络请求，由 `WYNetworkRequestManager` 实现
+* 该框架支持GET，POST，PUT，DELETE四种网络请求，由 `WYNetworkRequestManager` 类管理
 * 所有这些普通的网络请求都支持写入和读取缓存，但是默认只有GET支持自动缓存，当在发送错误的时候（如：网络断开）自动加载缓存数据，其他默认都不支持
 * 支持用户自行决定是否写入、读取缓存已以及设置缓存时间，默认缓存时间为30天
 * 支持用户自行选择请求序列化方式
@@ -137,7 +137,7 @@ import "WYNetwork.h"
 
 
 ### 缓存管理
-缓存管理是由 `WYNetworkCacheManager` 单列来实现的，分为缓存的读取，删除和计算。
+缓存管理是由 `WYNetworkCacheManager` 类管理，分为缓存的读取，删除和计算。
 
 #### 读取缓存
 
@@ -230,8 +230,8 @@ import "WYNetwork.h"
 
 ### 图像上传
 
-* 由 `WYNetworkUploadManager` 类的单例实现，支持上传单个与多个图像
-* 内置三张压缩算法，不同大小的图像下压缩效率各有千秋
+* 由 `WYNetworkUploadManager` 类管理，支持上传单个与多个图像
+* 内置三张压缩算法，不同大小的图像下压缩效率和压缩效果各不同
 * 支持压缩最小值设置，低于最小值便不会继续压缩，默认为150kb大小
 
 
@@ -323,4 +323,27 @@ import "WYNetwork.h"
      }];
 ```
 
+
+### 上传多张图片
+
+* 默认采用仿微信的压缩方式进行上传
+* 默认最低压缩比率为150kb
+* 默认上传图像格式为png格式
+* 基本用法和单图上传类似
+
+```
+[[WYNetworkManager sharedManager] sendUploadImagesRequest:WYHTTPRequestSerializer
+                                                          url:@"/upload/image"
+                                                   parameters:nil
+                                                       images:@[imageOne, imageTwo]
+                                                         name:@"file"
+                                                     progress:^(NSProgress *uploadProgress)
+     {
+         
+     } success:^(id responseObject) {
+         
+     } failure:^(NSURLSessionTask *task, NSError *error, NSInteger statusCode, NSArray<UIImage *> *uploadFailedImages) {
+         
+     }];
+```
 

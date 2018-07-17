@@ -7,24 +7,13 @@
 //
 
 #import "WYImageScaleTool.h"
-
-/** 计算图像压缩所需时间 */
-#import <mach/mach_time.h>
-double MachTimeToSecs(uint64_t time)
-{
-    mach_timebase_info_data_t timebase;
-    mach_timebase_info(&timebase);
-    return (double)time * (double)timebase.numer /  (double)timebase.denom / 1e9;
-}
-
-
-
-
+#import "WYNetworkConfig.h"
+#import "WYNetworkHeader.h"
 
 @implementation WYImageScaleTool
 
-+ (instancetype)sharedManager
-{
++ (instancetype)sharedManager {
+    
     static WYImageScaleTool *_instace = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -35,27 +24,26 @@ double MachTimeToSecs(uint64_t time)
 
 
 
-
 #pragma mark- ============== Public Methods ==============
 
 
 /** 仿微信压缩图像 */
 + (NSData *)compressOfImageWithWeiChat:(UIImage *)source_image
-                               maxSize:(NSInteger)maxSize
-{
+                               maxSize:(NSInteger)maxSize {
+    
     CGFloat compression    = 1.0f;
     CGFloat minCompression = 0.5f;
     NSData * imageData = UIImageJPEGRepresentation(source_image, compression);
     CGFloat imageFileSize = imageData.length / 1024;
-    NSLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
+    
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
+    }
     
     
     WYImageScaleTool *tool = [WYImageScaleTool sharedManager];
     UIImage *newImage = [tool Compresimage:source_image];
-    
-    
-    uint64_t begin = mach_absolute_time();
-    
     
     
     // 每次减少的比例
@@ -68,29 +56,22 @@ double MachTimeToSecs(uint64_t time)
         imageData = UIImageJPEGRepresentation(newImage,
                                               compression);
         
-//        NSLog(@"\n压缩比 -> %g, \n压缩后的大小 -> %lu Kb, \n缩放后的大小 -> %lu Kb, \n原图大小 -> %lu Kb", compression, (unsigned long)imageData.length/1024, (unsigned long)scaleData.length/1024, (unsigned long)originalData.length/1024);
+//        WYNetworkLog(@"\n压缩比 -> %g, \n压缩后的大小 -> %lu Kb, \n缩放后的大小 -> %lu Kb, \n原图大小 -> %lu Kb", compression, (unsigned long)imageData.length/1024, (unsigned long)scaleData.length/1024, (unsigned long)originalData.length/1024);
         
     }
     
-    uint64_t end = mach_absolute_time();
-    NSLog(@"压缩时间  = %g s,  压缩后图片大小 = %lu Kb", MachTimeToSecs(end - begin), (unsigned long)imageData.length/1024);
-    
-    
-    
-//    NSString *str = [NSString stringWithFormat:@"Original -> %lu Kb\n Scale -> %lu Kb\n Compression -> %lu Kb\n Time -> %g s\n Count -> %ld", (unsigned long)OldimageFileSize, (unsigned long)imageFileSize, (unsigned long)NewImageData.length/1024, MachTimeToSecs(end - begin), count];
-//
-//    NSLog(@"%@", str);
-    
+    CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)imageData.length/1024);
+    }
     
     return imageData;
 }
 
 
-
-
 /** 二分法压缩图像 */
-+ (NSData *)compressOfImageWithTwoPoints:(UIImage *)source_image maxSize:(NSInteger)maxSize
-{
++ (NSData *)compressOfImageWithTwoPoints:(UIImage *)source_image maxSize:(NSInteger)maxSize {
+    
     // 先判断当前质量是否满足要求，不满足再进行压缩
     __block NSData *finallImageData = UIImageJPEGRepresentation(source_image,1.0);
     NSUInteger sizeOrigin   = finallImageData.length;
@@ -101,8 +82,11 @@ double MachTimeToSecs(uint64_t time)
     }
     
     WYImageScaleTool *tool = [WYImageScaleTool sharedManager];
-    uint64_t begin = mach_absolute_time();
-    NSLog(@"原图大小 = %lu Kb", (unsigned long)finallImageData.length/1024);
+    
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)finallImageData.length/1024);
+    }
     
     
     // 先调整分辨率
@@ -137,9 +121,10 @@ double MachTimeToSecs(uint64_t time)
     }
     
     
-    
-    uint64_t end = mach_absolute_time();
-    NSLog(@"压缩时间  = %g s,  压缩后图片大小 = %lu Kb", MachTimeToSecs(end - begin), (unsigned long)finallImageData.length/1024);
+    CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)finallImageData.length/1024);
+    }
     
     return finallImageData;
 }
@@ -149,22 +134,20 @@ double MachTimeToSecs(uint64_t time)
 
 
 /** 等比例缩小图像压缩 */
-+ (NSData *)compressOfImageWithEqualProportion:(UIImage *)source_image maxSize:(NSInteger)maxSize
-{
++ (NSData *)compressOfImageWithEqualProportion:(UIImage *)source_image maxSize:(NSInteger)maxSize {
+    
     CGFloat compression    = 1.0f;
     CGFloat minCompression = 0.5f;
     NSData * imageData = UIImageJPEGRepresentation(source_image, compression);
-    NSLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
     
+    CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
+    }
     
     CGFloat imageFileSize = imageData.length / 1024;
-    
     WYImageScaleTool *tool = [WYImageScaleTool sharedManager];
     UIImage *newImage = [tool scaleToWidth:1242 scaleImage:source_image];
-    
-    
-    uint64_t begin = mach_absolute_time();
-    
     
     
     // 每次减少的比例
@@ -177,18 +160,14 @@ double MachTimeToSecs(uint64_t time)
         imageData = UIImageJPEGRepresentation(newImage,
                                               compression);
         
-//        NSLog(@"\n压缩比 -> %g, \n压缩后的大小 -> %lu Kb, \n缩放后的大小 -> %lu Kb, \n原图大小 -> %lu Kb", compression, (unsigned long)imageData.length/1024, (unsigned long)scaleData.length/1024, (unsigned long)originalData.length/1024);
+//        WYNetworkLog(@"\n压缩比 -> %g, \n压缩后的大小 -> %lu Kb, \n缩放后的大小 -> %lu Kb, \n原图大小 -> %lu Kb", compression, (unsigned long)imageData.length/1024, (unsigned long)scaleData.length/1024, (unsigned long)originalData.length/1024);
         
     }
     
-    uint64_t end = mach_absolute_time();
-    NSLog(@"压缩时间  = %g s,  压缩后图片大小 = %lu Kb", MachTimeToSecs(end - begin), (unsigned long)imageData.length/1024);
-    
-    
-//    NSString *str = [NSString stringWithFormat:@"Original -> %lu Kb\n Scale -> %lu Kb\n Compression -> %lu Kb\n Time -> %g s\n Count -> %ld", (unsigned long)OldimageFileSize, (unsigned long)imageFileSize, (unsigned long)NewImageData.length/1024, MachTimeToSecs(end - begin), count];
-//
-//    NSLog(@"%@", str);
-    
+    CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
+    if ([WYNetworkConfig sharedConfig].debugMode) {
+        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)imageData.length/1024);
+    }
     
     return imageData;
 }
@@ -205,12 +184,10 @@ double MachTimeToSecs(uint64_t time)
 #pragma mark- ============== Private Methods ==============
 
 
-
 /** 调整图片分辨率/尺寸（等比例缩放） */
-
 - (UIImage *)newSizeImage:(CGSize)size image:(UIImage *)source_image {
-    CGSize newSize = CGSizeMake(source_image.size.width, source_image.size.height);
     
+    CGSize newSize = CGSizeMake(source_image.size.width, source_image.size.height);
     CGFloat tempHeight = newSize.height / size.height;
     CGFloat tempWidth = newSize.width / size.width;
     
@@ -231,8 +208,8 @@ double MachTimeToSecs(uint64_t time)
 
 
 /** 二分法压缩 */
-
 - (NSData *)halfFuntion:(NSArray *)arr image:(UIImage *)image sourceData:(NSData *)finallImageData maxSize:(NSInteger)maxSize {
+    
     NSData *tempData = [NSData data];
     NSUInteger start = 0;
     NSUInteger end = arr.count - 1;
@@ -247,7 +224,7 @@ double MachTimeToSecs(uint64_t time)
         NSUInteger sizeOrigin = finallImageData.length;
         NSUInteger sizeOriginKB = sizeOrigin / 1024;
         
-//        NSLog(@"当前降到的质量 -> %ld 压缩系数 -> %lg", (unsigned long)sizeOriginKB,  [arr[index] floatValue]);
+//        WYNetworkLog(@"当前降到的质量 -> %ld 压缩系数 -> %lg", (unsigned long)sizeOriginKB,  [arr[index] floatValue]);
         
         
         if (sizeOriginKB > maxSize) {
@@ -271,11 +248,9 @@ double MachTimeToSecs(uint64_t time)
 
 
 
-
 /** 在原有基础上图像等比例缩放 */
-
-- (UIImage *)scaleToWidth:(CGFloat)width scaleImage:(UIImage *)image
-{
+- (UIImage *)scaleToWidth:(CGFloat)width scaleImage:(UIImage *)image {
+    
     if (width > image.size.width) {
         return  image;
     }
@@ -289,20 +264,17 @@ double MachTimeToSecs(uint64_t time)
 }
 
 
-
-
-
 /** 仿照微信朋友圈图像缩放比例进行缩放图片 */
-
 - (UIImage *)Compresimage:(UIImage *)image {
+    
     CGSize size = [self CompressSizeImage:image];
     UIImage *reImage = [self resizedImage:size image:image];
     return reImage;
 }
 
 
-- (CGSize)CompressSizeImage:(UIImage *)image
-{
+- (CGSize)CompressSizeImage:(UIImage *)image {
+    
     CGFloat width = image.size.width;
     CGFloat height = image.size.height;
     CGFloat boundary = 1280;
@@ -338,8 +310,8 @@ double MachTimeToSecs(uint64_t time)
 }
 
 
-- (UIImage *)resizedImage:(CGSize)newSize image:(UIImage *)image
-{
+- (UIImage *)resizedImage:(CGSize)newSize image:(UIImage *)image {
+    
     CGRect newRect = CGRectMake(0, 0, newSize.width, newSize.height);
     UIGraphicsBeginImageContext(newRect.size);
     UIImage *newImage = [[UIImage alloc] initWithCGImage:image.CGImage scale:1 orientation:image.imageOrientation];

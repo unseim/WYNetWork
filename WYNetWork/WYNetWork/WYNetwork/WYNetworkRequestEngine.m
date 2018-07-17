@@ -93,9 +93,18 @@
         
         _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
         _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+    } else {
+        _sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        _sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
     }
     
-    NSString *encodingUrlString = [url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "]];
+    NSString *encodingUrlString = (NSString *)
+    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                              (CFStringRef)url,
+                                                              (CFStringRef)@"!$&'()*+,-./:;=?@_~%#[]",
+                                                              NULL,
+                                                              kCFStringEncodingUTF8));
     //generate complete url string
     NSString *completeUrlStr = [WYNetworkUtils generateCompleteRequestUrlStrWithBaseUrlStr:[WYNetworkConfig sharedConfig].baseUrl
                                                                              requestUrlStr:encodingUrlString];

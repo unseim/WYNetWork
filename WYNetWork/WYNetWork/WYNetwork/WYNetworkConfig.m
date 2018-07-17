@@ -22,7 +22,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
-        sharedInstance.timeoutSeconds = 20;
+        sharedInstance.timeoutSeconds = 30;
     });
     return sharedInstance;
 }

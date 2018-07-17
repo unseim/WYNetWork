@@ -639,6 +639,33 @@
                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
 
 
+
+/**
+ *  This method is used to upload image
+ *
+ *  @param serializer            json or http
+ *  @param url                   request url
+ *  @param parameters            parameters
+ *  @param compressType          image compress type
+ *  @param image                 UIImage object
+ *  @param name                  file name
+ *  @param uploadProgressBlock   upload progress callback
+ *  @param uploadSuccessBlock    uploadSuccess allback
+ *  @param uploadFailureBlock    upload failure callback
+ *
+ */
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                          name:(NSString * _Nonnull)name
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
+
+
+
 /**
  *  This method is used to upload image
  *
@@ -659,6 +686,96 @@
                     parameters:(id _Nullable)parameters
                          image:(UIImage * _Nonnull)image
                           name:(NSString * _Nonnull)name
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
+
+
+
+/**
+ *  This method is used to upload image
+ *
+ *  @param serializer            json or http
+ *  @param url                   request url
+ *  @param ignoreBaseUrl         consider whether to ignore configured base url
+ *  @param parameters            parameters
+ *  @param compressType          image compress type
+ *  @param image                 UIImage object
+ *  @param name                  file name
+ *  @param uploadProgressBlock   upload progress callback
+ *  @param uploadSuccessBlock    upload success callback
+ *  @param uploadFailureBlock    upload failure callback
+ *
+ */
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                 ignoreBaseUrl:(BOOL)ignoreBaseUrl
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                          name:(NSString * _Nonnull)name
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
+
+
+
+/**
+ *  This method is used to upload image
+ *
+ *  @param serializer            json or http
+ *  @param url                   request url
+ *  @param parameters            parameters
+ *  @param compressType          image compress type
+ *  @param image                 UIImage object
+ *  @param compressSize          compress size of images
+ *  @param name                  file name
+ *  @param mimeType              file type(jpg or png or jpeg  / default png)
+ *  @param uploadProgressBlock   upload progress callback
+ *  @param uploadSuccessBlock    upload success callback
+ *  @param uploadFailureBlock    upload failure callback
+ *
+ */
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                  compressSize:(float)compressSize
+                          name:(NSString * _Nonnull)name
+                      mimeType:(NSString * _Nullable)mimeType
+                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
+                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
+                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
+
+
+
+/**
+ *  This method is used to upload image
+ *
+ *  @param serializer            json or http
+ *  @param url                   request url
+ *  @param ignoreBaseUrl         consider whether to ignore configured base url
+ *  @param parameters            parameters
+ *  @param compressType          image compress type
+ *  @param image                 UIImage object
+ *  @param compressSize          compress size of images
+ *  @param name                  file name
+ *  @param mimeType              file type(jpg or png or jpeg  / default png)
+ *  @param uploadProgressBlock   upload progress callback
+ *  @param uploadSuccessBlock    upload success callback
+ *  @param uploadFailureBlock    upload failure callback
+ *
+ */
+- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
+                           url:(NSString * _Nonnull)url
+                 ignoreBaseUrl:(BOOL)ignoreBaseUrl
+                    parameters:(id _Nullable)parameters
+                  compressType:(WYUploadCompressType)compressType
+                         image:(UIImage * _Nonnull)image
+                  compressSize:(float)compressSize
+                          name:(NSString * _Nonnull)name
+                      mimeType:(NSString * _Nullable)mimeType
                       progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
                        success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
                        failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
@@ -716,69 +833,16 @@
 
 
 /**
- *  This method is used to upload image
- *
- *  @param serializer            json or http
- *  @param url                   request url
- *  @param parameters            parameters
- *  @param image                 UIImage object
- *  @param compressSize          compress size of images
- *  @param name                  file name
- *  @param uploadProgressBlock   upload progress callback
- *  @param uploadSuccessBlock    upload success callback
- *  @param uploadFailureBlock    upload failure callback
- *
- */
-- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
-                           url:(NSString * _Nonnull)url
-                    parameters:(id _Nullable)parameters
-                         image:(UIImage * _Nonnull)image
-                  compressSize:(float)compressSize
-                          name:(NSString * _Nonnull)name
-                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
-                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
-                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
-
-
-/**
- *  This method is used to upload image
- *
- *  @param serializer            json or http
- *  @param url                   request url
- *  @param ignoreBaseUrl         consider whether to ignore configured base url
- *  @param parameters            parameters
- *  @param image                 UIImage object
- *  @param compressSize          compress size of images
- *  @param name                  file name
- *  @param uploadProgressBlock   upload progress callback
- *  @param uploadSuccessBlock    upload success callback
- *  @param uploadFailureBlock    upload failure callback
- *
- */
-- (void)sendUploadImageRequest:(WYRequestSerializer)serializer
-                           url:(NSString * _Nonnull)url
-                 ignoreBaseUrl:(BOOL)ignoreBaseUrl
-                    parameters:(id _Nullable)parameters
-                         image:(UIImage * _Nonnull)image
-                  compressSize:(float)compressSize
-                          name:(NSString * _Nonnull)name
-                      progress:(WYUploadProgressBlock _Nullable)uploadProgressBlock
-                       success:(WYUploadSuccessBlock _Nullable)uploadSuccessBlock
-                       failure:(WYUploadFailureBlock _Nullable)uploadFailureBlock;
-
-
-
-
-/**
  *  This method is used to upload images(or only one image)
  *
  *  @param serializer            json or http
  *  @param url                   request url
  *  @param parameters            parameters
+ *  @param compressType          image compress type
  *  @param images                UIImage object array
  *  @param compressSize          compress size of images
  *  @param name                  file name
- *  @param mimeType              file type
+ *  @param mimeType              file type(jpg or png or jpeg  / default png)
  *  @param uploadProgressBlock   upload progress callback
  *  @param uploadSuccessBlock    upload success callback
  *  @param uploadFailureBlock    upload failure callback
@@ -787,6 +851,7 @@
 - (void)sendUploadImagesRequest:(WYRequestSerializer)serializer
                             url:(NSString * _Nonnull)url
                      parameters:(id _Nullable)parameters
+                   compressType:(WYUploadCompressType)compressType
                          images:(NSArray<UIImage *> * _Nonnull)images
                    compressSize:(float)compressSize
                            name:(NSString * _Nonnull)name
@@ -797,17 +862,17 @@
 
 
 
-
 /**
  *
  *  @param serializer            json or http
  *  @param url                   request url
  *  @param ignoreBaseUrl         consider whether to ignore configured base url
  *  @param parameters            parameters
+ *  @param compressType          image compress type
  *  @param images                UIImage object array
  *  @param compressSize          compress size of images
  *  @param name                  file name
- *  @param mimeType              file type
+ *  @param mimeType              file type(jpg or png or jpeg  / default png)
  *  @param uploadProgressBlock   upload progress callback
  *  @param uploadSuccessBlock    upload success callback
  *  @param uploadFailureBlock    upload failure callback
@@ -817,6 +882,7 @@
                             url:(NSString * _Nonnull)url
                   ignoreBaseUrl:(BOOL)ignoreBaseUrl
                      parameters:(id _Nullable)parameters
+                   compressType:(WYUploadCompressType)compressType
                          images:(NSArray<UIImage *> * _Nonnull)images
                    compressSize:(float)compressSize
                            name:(NSString * _Nonnull)name
@@ -842,8 +908,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
                     success:(WYDownloadSuccessBlock _Nullable)downloadSuccessBlock
@@ -864,8 +929,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
@@ -888,8 +952,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
@@ -910,8 +973,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
@@ -932,8 +994,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
           backgroundSupport:(BOOL)backgroundSupport
                    progress:(WYDownloadProgressBlock _Nullable)downloadProgressBlock
@@ -955,8 +1016,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
           backgroundSupport:(BOOL)backgroundSupport
@@ -977,8 +1037,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
           backgroundSupport:(BOOL)backgroundSupport
@@ -1002,8 +1061,7 @@
  *  @param downloadFailureBlock     download failure callback
  *
  */
-- (void)sendDownloadRequest:(WYRequestSerializer)serializer
-                        url:(NSString * _Nonnull)url
+- (void)sendDownloadRequest:(NSString * _Nonnull)url
               ignoreBaseUrl:(BOOL)ignoreBaseUrl
            downloadFilePath:(NSString *_Nonnull)downloadFilePath
                   resumable:(BOOL)resumable
@@ -1394,3 +1452,4 @@
 
 
 @end
+

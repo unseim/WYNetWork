@@ -301,10 +301,10 @@ import "WYNetwork.h"
 ```
 
 
-**忽略设置过的baseUrl**
+**忽略设置过的 baseUrl**
 
-考虑到上传图片的服务器可能与普通请求的服务器不同，特意增加了一个ignoreBaseUrl参数
-如果该BOOL设置为YES，则在WYNetworkConfig里面设置的baseUrl就会被忽略掉
+考虑到上传图片的服务器可能与普通请求的服务器不同，特意增加了一个 `ignoreBaseUrl` 参数
+如果该属性设置为 `YES` ，则在 `WYNetworkConfig` 里面设置的 `baseUrl` 就会被忽略掉
 
 ```
 [[WYNetworkManager sharedManager] sendUploadImageRequest:WYHTTPRequestSerializer
@@ -345,5 +345,177 @@ import "WYNetwork.h"
      } failure:^(NSURLSessionTask *task, NSError *error, NSInteger statusCode, NSArray<UIImage *> *uploadFailedImages) {
          
      }];
+```
+
+
+## 文件下载
+
+下载功能由 `WYNetworkDownloadManager` 来进行管理，支持断点续传以及后台下载
+
+
+* 	如果设置为支持后台下载，则在内部生成的task类为：`NSURLSessionDownloadTask` 。在手机退出前台，进入后台后后仍然可以下载。
+* 	如果设置为不支持后台下载，则在内部生成的task类为：`NSURLSessionDataTask` 。在手机退出前台后无法继续下载，但是通过框架内部的自动恢复下载机制，在回到前台后就会继续之前的下载。而且结合了NSOutputStream实例，将下载下来的数据一点一点的写在沙盒里面，减少了内存的压力，也就是支持大文件下载。
+* 	如果支持断点续传，则由于断网或者取消请求等造成的下载失败后会保存未下载完成的数据。在后来启动该下载任务后，会继续下载。
+* 如果不支持断点续传，则不会保留未下载完成的数据。在后来启动该下载后只能从头开始下载。
+* 默认配置为：支持断点续传，不支持后台下载，如果支持断点续传，在返回失败的回调里面会传过来未下载完成数据的路径。
+
+
+**发起一个支持断点续传，不支持后台下载的请求**
+
+```
+[[WYNetworkManager sharedManager] sendDownloadRequest:@"111.txt"
+                                         downloadFilePath:@"file"
+                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress)
+    {
+        
+    } success:^(id responseObject) {
+        
+    } failure:^(NSURLSessionTask *task, NSError *error, NSString *resumableDataPath) {
+        
+    }];
+```
+
+**发起一个不支持断点续传，不支持后台下载的请求**
+
+和上传功能一样，如果将 `ignoreBaseUrl` 参数
+如果该属性设置为 `YES` ，则在 `WYNetworkConfig` 里面设置的 `baseUrl` 就会被忽略掉
+
+```
+[[WYNetworkManager sharedManager] sendDownloadRequest:@"111.txt"
+                                         downloadFilePath:@"file"
+                                                resumable:NO
+                                        backgroundSupport:NO
+                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress)
+    {
+        
+    } success:^(id responseObject) {
+        
+    } failure:^(NSURLSessionTask *task, NSError *error, NSString *resumableDataPath) {
+        
+    }];
+```
+
+**过滤baseUrl**
+
+```
+[[WYNetworkManager sharedManager] sendDownloadRequest:@"http://112.21.31.32:9000/file/111.txt"
+                                            ignoreBaseUrl:YES
+                                         downloadFilePath:@"file"
+                                                 progress:^(NSInteger receivedSize, NSInteger expectedSize, CGFloat progress)
+    {
+        
+    } success:^(id responseObject) {
+        
+    } failure:^(NSURLSessionTask *task, NSError *error, NSString *resumableDataPath) {
+        
+    }];
+
+```
+
+
+**暂停下载**
+
+单独暂停某个下载请求
+```
+[[WYNetworkManager sharedManager] suspendDownloadRequest:@"111.txt"];
+
+```
+
+多个暂停下载请求
+```
+[[WYNetworkManager sharedManager] suspendDownloadRequests:@[@"111.txt", @"123.png"]];
+```
+
+暂停所有的下载请求
+```
+[[WYNetworkManager sharedManager] suspendAllDownloadRequests];
+```
+
+
+
+**恢复下载**
+
+恢复单个下载请求
+```
+[[WYNetworkManager sharedManager] resumeDownloadReqeust:@"111.txt"];
+```
+
+恢复多个下载请求
+```
+[[WYNetworkManager sharedManager] resumeDownloadReqeusts:@[@"111.txt", @"123.png"]];
+```
+
+恢复所有的下载请求
+```
+[[WYNetworkManager sharedManager] resumeAllDownloadRequests];
+```
+
+
+
+**取消下载**
+
+取消单个下载请求
+```
+[[WYNetworkManager sharedManager] cancelDownloadRequest:@"111.txt"];
+```
+
+取消多个下载请求
+```
+[[WYNetworkManager sharedManager] cancelDownloadRequests:@[@"111.txt", @"123.png"]];
+```
+
+取消所有的下载请求
+```
+[[WYNetworkManager sharedManager] cancelAllDownloadRequests];
+```
+
+
+
+## 请求管理
+
+**取消请求**
+
+取消某个请求
+```
+[[WYNetworkManager sharedManager] cancelCurrentRequestWithUrl:@"index/test"
+                                                           method:@"POST"
+                                                       parameters:@{@"page"    : @(0),
+                                                                    @"version" : @"1.0" }];
+```
+
+
+取消相同url，不同参数的请求
+
+```
+[[WYNetworkManager sharedManager] cancelCurrentRequestWithUrl:@"index/test"];
+```
+
+
+取消所有正在进行的请求
+```
+[[WYNetworkManager sharedManager] cancelAllCurrentRequests];
+```
+
+
+
+
+
+**请求查询查询**
+
+查询是否有正在进行的请求
+```
+[[WYNetworkManager sharedManager] remainingCurrentRequests];
+```
+
+
+查询正在进行的请求个数
+```
+[[WYNetworkManager sharedManager] currentRequestCount];
+```
+
+
+打印所有正在进行的请求对象
+```
+[[WYNetworkManager sharedManager] logAllCurrentRequests];
 ```
 

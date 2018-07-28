@@ -1,7 +1,7 @@
 //
 //  WYImageScaleTool.m
 //  WYNetWork
-//  简书地址：http://www.jianshu.com/u/8f8143fbe7e4
+//  博客地址：https://www.wncblog.top
 //  GitHub地址：https://github.com/unseim
 //  QQ：9137279
 //
@@ -38,7 +38,7 @@
     
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
+        WYNetworkLog(@"原图大小: %lu Kb", (unsigned long)imageData.length/1024);
     }
     
     
@@ -62,7 +62,7 @@
     
     CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)imageData.length/1024);
+        WYNetworkLog(@"压缩时间: %.4lf s,  压缩后图片大小: %lu Kb", linkTime, (unsigned long)imageData.length/1024);
     }
     
     return imageData;
@@ -85,7 +85,7 @@
     
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)finallImageData.length/1024);
+        WYNetworkLog(@"原图大小: %lu Kb", (unsigned long)finallImageData.length/1024);
     }
     
     
@@ -123,7 +123,7 @@
     
     CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)finallImageData.length/1024);
+        WYNetworkLog(@"压缩时间: %.4lf s,  压缩后图片大小: %lu Kb", linkTime, (unsigned long)finallImageData.length/1024);
     }
     
     return finallImageData;
@@ -142,7 +142,7 @@
     
     CFAbsoluteTime startTime = CFAbsoluteTimeGetCurrent();
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"原图大小 = %lu Kb", (unsigned long)imageData.length/1024);
+        WYNetworkLog(@"原图大小: %lu Kb", (unsigned long)imageData.length/1024);
     }
     
     CGFloat imageFileSize = imageData.length / 1024;
@@ -166,7 +166,7 @@
     
     CFAbsoluteTime linkTime = (CFAbsoluteTimeGetCurrent() - startTime);
     if ([WYNetworkConfig sharedConfig].debugMode) {
-        WYNetworkLog(@"压缩时间  = %.4lf s,  压缩后图片大小 = %lu Kb", linkTime, (unsigned long)imageData.length/1024);
+        WYNetworkLog(@"压缩时间: %.4lf s,  压缩后图片大小: %lu Kb", linkTime, (unsigned long)imageData.length/1024);
     }
     
     return imageData;

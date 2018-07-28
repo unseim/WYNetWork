@@ -519,11 +519,3 @@ import "WYNetwork.h"
 [[WYNetworkManager sharedManager] logAllCurrentRequests];
 ```
 
-
-
-
-## License
-
-WYNetwork is released under the MIT license. See [LICENSE](https://github.com/unseim/WYNetWork/blob/master/LICENSE) for details.
-
-
